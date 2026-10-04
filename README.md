@@ -114,9 +114,10 @@ Works fine on Wayland sessions out of the box. However, for X11 sessions, see ht
 Works as intended. 
 
 Tested using:
-- Lenovo Thinkpad Universal Thunderbolt 3 Docking Station
-- Lenovo Thinkpad Universal Thunderbolt 4 Docking Station
+- Lenovo Thinkpad Thunderbolt 3 Gen 2 Dock
+- Lenovo Thinkpad Universal Thunderbolt 4 Dock
 - Lenovo Thinkpad Universal Thunderbolt 4 Smart Dock
+- Lenovo Thinkpad Thunderbolt 4 Workstation Dock
 - Dell WD15 Thunderbolt 3 Docking Station
 - MOKIN MOUC1705
 - Hagibis Pro MC100
@@ -155,7 +156,7 @@ The following works:
     - You can can remap using [Input Remapper](https://github.com/sezanzeb/input-remapper).
     - I have not had much luck with getting this to work on Plasma 6.
 
-Using Lenovo's bluetooth leyboard specifically also forcefully has additional Function bindings:
+Using Lenovo's bluetooth keyboard specifically also forcefully has additional Function bindings:
 
 - FN + Q: Cycle System Performance Mode (does not do anything like the dedicated key)
 - FN + R: Cycle refresh rates (does not actually do anything)
@@ -213,6 +214,18 @@ Power Save: Battery Saving
 Balanced: Intelligent Cooling
 Performance: Extreme Performance
 
+### Detecting physical keyboard attached on bottom display
+
+Now detectable as of Kernel 7.3+. Requires scripting. Will provide examples soon.
+
+### Tablet mode
+
+Not detected as is. Possible getting around as when you arent in a laptop orientation, there is indication that a "touchpad" is turned off
+
+I am currently finding a way to manually override this as the hinge sensor is exposed and can be used to determine what angle warrants tablet mode.
+
+Note: as of Kernel 7.3+, SW_TABLET_MODE is on/off when the keyboard is attached or not. I disagree with this way of detection, preferring this to be more based on hinge orientation.
+
 ## Others without comment
 - Camera
 - Microphone support
@@ -223,21 +236,9 @@ Performance: Extreme Performance
  
 ## Not working
 
-### Tablet mode
-
-Not detected as is. Possible getting around as when you arent in a laptop orientation, there is indication that a "touchpad" is turned off
-
-I am currently finding a way to manually override this as the hinge sensor is exposed and can be used to determine what angle warrants tablet mode.
-
 ### User Center software experience
 
 Lenovo does not make a User Center application that works with Linux. This is expected as this has never been advertised as such. I'm only reporting this here to save people from asking.
-
-### Detecting physical keyboard attached on bottom display
-
-Libinput does not detect this. This might change if the bottom screen has full touch support. I will revisit this only when the bottom screen has full multi touch support.
-
-If you're wanting to simply turn off the bottom display, you can change the state of either display as you please with manual scripts. I will look into providing some if requested via an Issue.
 
 ### Haptics
 
